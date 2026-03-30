@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahima Verma — Analytics Lead</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:        #0f0f0f;
+  --ink-mid:    #2a2a2a;
+  --ink-light:  #666;
+  --paper:      #f7f4ef;
+  --paper-warm: #ede9e2;
+  --paper-card: #fff;
+  --gold:       #b8963e;
+  --gold-light: #e8d5a3;
+  --rule:       #d6cfC5;
+  --accent:     #1a3a4a;
+  --accent-mid: #2c5a72;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--paper-warm); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ── NAV ───────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3.5rem; height: 52px;
+  background: rgba(247,244,239,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem; letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+.nav-links {
+  display: flex; gap: 2.5rem;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-light);
+}
+.nav-links a { text-decoration: none; color: inherit; transition: color .2s; }
+.nav-links a:hover { color: var(--gold); }
+
+.nav-badge {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+}
+
+/* ── HERO ──────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated paper texture */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(184,150,62,.07) 0%, transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(26,58,74,.05) 0%, transparent 45%);
+}
+
+/* Diagonal split */
+.hero-left {
+  padding: 7rem 3.5rem 6rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; z-index: 2;
+  background: var(--paper);
+}
+
+.hero-right {
+  background: var(--accent);
+  padding: 7rem 3.5rem 6rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+  clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Right panel decorative elements */
+.hero-right::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.hero-right::after {
+  content: '';
+  position: absolute; bottom: -120px; left: -80px;
+  width: 420px; height: 420px;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+/* Hero left content */
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 0.8rem;
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 2rem;
+  animation: fadeUp .7s .1s both;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px; background: var(--gold);
+}
+
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.6rem, 6.5vw, 5.5rem);
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+  animation: fadeUp .7s .15s both;
+}
+
+.hero-name-italic {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-title {
+  font-size: 0.8rem; font-weight: 400; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--ink-light);
+  margin-bottom: 2.5rem;
+  animation: fadeUp .7s .2s both;
+}
+
+.hero-summary {
+  font-size: 1rem; font-weight: 300; line-height: 1.85;
+  color: var(--ink-mid);
+  max-width: 440px; margin-bottom: 3rem;
+  animation: fadeUp .7s .25s both;
+}
+.hero-summary strong { font-weight: 600; color: var(--ink); }
+
+.hero-contact-row {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  animation: fadeUp .7s .35s both;
+}
+.contact-pill {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.73rem; color: var(--ink-light);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule); padding-bottom: 0.15rem;
+  transition: color .2s, border-color .2s;
+}
+.contact-pill:hover { color: var(--gold); border-color: var(--gold); }
+.contact-pill .ico { font-size: 0.8rem; }
+
+/* Hero right — metrics */
+.metrics-label {
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  margin-bottom: 2.5rem;
+  animation: fadeUp .7s .2s both;
+}
+
+.metrics-stack {
+  display: flex; flex-direction: column; gap: 1px;
+  flex: 1;
+}
+
+.metric-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  animation: fadeRight .6s both;
+  position: relative; z-index: 1;
+}
+.metric-item:nth-child(1) { animation-delay: .25s; }
+.metric-item:nth-child(2) { animation-delay: .35s; }
+.metric-item:nth-child(3) { animation-delay: .45s; }
+.metric-item:nth-child(4) { animation-delay: .55s; }
+.metric-item:nth-child(5) { animation-delay: .65s; }
+.metric-item:nth-child(6) { animation-delay: .75s; }
+
+.metric-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem; line-height: 1;
+  color: #fff;
+}
+.metric-number sup {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--gold-light); vertical-align: super;
+}
+
+.metric-desc {
+  font-size: 0.75rem; font-weight: 300; line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+}
+.metric-desc strong {
+  display: block; font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.1rem;
+}
+
+/* ── SECTION SHARED ───────────────────────────────── */
+.sec {
+  padding: 6rem 3.5rem;
+  position: relative;
+}
+
+.sec:nth-child(even) { background: var(--paper-warm); }
+
+.sec-header {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.sec-num {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic; font-size: 0.85rem;
+  color: var(--gold); letter-spacing: 1px;
+  min-width: 2rem;
+}
+
+.sec-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem; color: var(--ink); line-height: 1;
+}
+
+.sec-rule {
+  flex: 1; height: 1px; background: var(--rule); margin-bottom: 4px;
+}
+
+/* ── EXPERIENCE ───────────────────────────────────── */
+.exp-grid {
+  display: flex; flex-direction: column; gap: 0;
+}
+
+.exp-block {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+  position: relative;
+  transition: background .2s;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.exp-block.visible { opacity: 1; transform: translateY(0); }
+.exp-block:last-child { border-bottom: 1px solid var(--rule); }
+
+.exp-left { padding-top: 0.15rem; }
+
+.exp-period {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--ink-light);
+  margin-bottom: 0.5rem;
+}
+
+.exp-company {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem; color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.exp-subco {
+  font-size: 0.72rem; color: var(--gold);
+  font-weight: 500; letter-spacing: 0.5px;
+}
+
+.exp-right {}
+
+.exp-role {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem; color: var(--ink);
+  margin-bottom: 1.2rem; line-height: 1.2;
+}
+
+.exp-bullets {
+  list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+.exp-bullets li {
+  font-size: 0.85rem; line-height: 1.7; color: var(--ink-mid);
+  padding-left: 1.2rem; position: relative;
+}
+.exp-bullets li::before {
+  content: '–';
+  position: absolute; left: 0; color: var(--gold);
+}
+.exp-bullets li strong { color: var(--ink); font-weight: 600; }
+
+.exp-chips {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+
+.chip {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.5px;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--rule);
+  border-radius: 100px; color: var(--ink-light);
+  background: transparent;
+  transition: border-color .2s, color .2s;
+}
+.chip:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── SKILLS ────────────────────────────────────────── */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;
+}
+
+.skill-group-label {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.skill-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--paper-warm);
+}
+
+.skill-name {
+  font-size: 0.82rem; color: var(--ink-mid); font-weight: 400;
+}
+
+.skill-dot {
+  display: flex; gap: 3px; align-items: center;
+}
+
+.dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--rule);
+  transition: background .3s;
+}
+.dot.on { background: var(--gold); }
+
+/* ── EDUCATION ─────────────────────────────────────── */
+.edu-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+
+.edu-card {
+  padding: 2.5rem;
+  background: var(--paper-card);
+  position: relative; overflow: hidden;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.edu-card.visible { opacity: 1; transform: translateY(0); }
+.edu-card:nth-child(2) { transition-delay: .1s; }
+.edu-card:nth-child(3) { transition-delay: .2s; }
+
+.edu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.edu-type {
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.edu-degree {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem; line-height: 1.25; color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.edu-inst {
+  font-size: 0.78rem; color: var(--ink-light); margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.edu-grade {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--paper-warm);
+  padding: 0.3rem 0.8rem; border-radius: 100px;
+}
+
+/* ── WHY ME ────────────────────────────────────────── */
+.why-sec {
+  background: var(--ink) !important;
+  position: relative; overflow: hidden;
+}
+
+.why-sec::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 90%, rgba(184,150,62,.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 10%, rgba(44,90,114,.2) 0%, transparent 50%);
+}
+
+.why-sec .sec-title { color: var(--paper); }
+.why-sec .sec-num { color: var(--gold); }
+.why-sec .sec-rule { background: rgba(255,255,255,0.1); }
+
+.why-intro {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.4rem; line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  max-width: 680px; margin-bottom: 4rem;
+}
+.why-intro strong {
+  font-style: normal; color: rgba(255,255,255,0.9);
+}
+
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+.why-card {
+  background: var(--ink);
+  padding: 2.5rem 2rem;
+  position: relative;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease, background .2s;
+}
+.why-card.visible { opacity: 1; transform: translateY(0); }
+.why-card:nth-child(2) { transition-delay: .08s; }
+.why-card:nth-child(3) { transition-delay: .16s; }
+.why-card:nth-child(4) { transition-delay: .12s; }
+.why-card:nth-child(5) { transition-delay: .2s; }
+.why-card:nth-child(6) { transition-delay: .28s; }
+
+.why-card:hover { background: #161616; }
+
+.why-card-num {
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.why-card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem; color: #fff;
+  margin-bottom: 0.8rem; line-height: 1.25;
+}
+
+.why-card-body {
+  font-size: 0.82rem; line-height: 1.8;
+  color: rgba(255,255,255,0.48);
+  font-weight: 300;
+}
+.why-card-body strong { color: rgba(255,255,255,0.82); font-weight: 500; }
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background: var(--paper-warm);
+  border-top: 1px solid var(--rule);
+  padding: 3rem 3.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+
+.footer-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem; color: var(--ink);
+}
+
+.footer-links {
+  display: flex; gap: 2rem;
+}
+.footer-links a {
+  font-size: 0.75rem; color: var(--ink-light);
+  text-decoration: none; letter-spacing: 0.5px;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+.footer-tagline {
+  font-size: 0.7rem; color: var(--ink-light);
+  letter-spacing: 1px; font-style: italic;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeRight {
+  from { opacity:0; transform: translateX(20px); }
+  to   { opacity:1; transform: translateX(0); }
+}
+
+/* ── CERTIFICATIONS ROW ─────────────────────────────── */
+.cert-row {
+  display: flex; flex-wrap: wrap; gap: 0.8rem;
+  margin-top: 3rem;
+}
+.cert-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.75rem; color: var(--ink-mid); font-weight: 400;
+  transition: border-color .2s, color .2s;
+}
+.cert-badge:hover { border-color: var(--gold); color: var(--ink); }
+.cert-badge .cert-icon { font-size: 0.9rem; }
+
+/* responsive basics */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { clip-path: none; padding: 4rem 2rem; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .edu-row { grid-template-columns: 1fr; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .sec { padding: 4rem 1.5rem; }
+  .exp-block { grid-template-columns: 1fr; gap: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Mahima Verma</div>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#why">Why Me</a>
+  </div>
+  <div class="nav-badge">Open to Senior Roles</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-eyebrow">Analytics Manager · London</div>
+      <h1 class="hero-name">
+        Mahima<br>
+        <span class="hero-name-italic">Verma</span>
+      </h1>
+      <p class="hero-title">BI & CX Analytics · Salesforce Admin Certified</p>
+      <p class="hero-summary">
+        Analytics professional with <strong>6+ years</strong> turning messy, multi-source data into clear decisions that move the needle. From C-suite dashboards to root cause deep-dives — I don't just report numbers, I <strong>change what the business does</strong> because of them.
+      </p>
+    </div>
+    <div class="hero-contact-row">
+      <a class="contact-pill" href="mailto:mahima.verma1804@gmail.com">
+        <span class="ico">✉</span> mahima.verma1804@gmail.com
+      </a>
+      <a class="contact-pill" href="tel:+447502611542">
+        <span class="ico">✆</span> +44 7502 611542
+      </a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/mahima-verma-073660125/" target="_blank">
+        <span class="ico">in</span> LinkedIn
+      </a>
+      <span class="contact-pill">
+        <span class="ico">◉</span> London, UK E14 9GN
+      </span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="metrics-label">          Impact at a Glance</div>
+    <div class="metrics-stack">
+
+      <div class="metric-item">
+        <div class="metric-number">$22<sup>M</sup></div>
+        <div class="metric-desc">
+          <strong>Revenue Uncovered</strong>
+          Competitive benchmarking at United Airlines hub level
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-number">45<sup>%</sup></div>
+        <div class="metric-desc">
+          <strong>Manual Reporting Eliminated</strong>
+          AI-powered automation via Power BI Copilot across 30+ markets
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-number">£40<sup>K</sup></div>
+        <div class="metric-desc">
+          <strong>Annual Cost Savings</strong>
+          Insight-led process improvements at HelloFresh UK
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-number">18<sup>%</sup></div>
+        <div class="metric-desc">
+          <strong>Campaign Engagement Uplift</strong>
+          Share A Coke via Salesforce CRM data integration
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-number">5<sup>%</sup></div>
+        <div class="metric-desc">
+          <strong>Retention Uplift</strong>
+          A/B testing on loyalty compensation policy at HelloFresh
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-number">30<sup>+</sup></div>
+        <div class="metric-desc">
+          <strong>European Markets</strong>
+          Behavioural & loyalty analytics informing C-suite planning
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec" id="experience">
+  <div class="sec-header">
+    <div class="sec-num">01</div>
+    <h2 class="sec-title">Work Experience</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="exp-grid">
+
+    <!-- Konecta / Coca-Cola -->
+    <div class="exp-block">
+      <div class="exp-left">
+        <div class="exp-period">May 2025 – Present</div>
+        <div class="exp-company">Konecta</div>
+        <div class="exp-subco">For Coca-Cola</div>
+      </div>
+      <div class="exp-right">
+        <h3 class="exp-role">Analytics Lead,<br>Consumer Care</h3>
+        <ul class="exp-bullets">
+          <li>Set the strategic analytics vision across <strong>30+ European markets</strong>, delivering behavioural & loyalty insights from Coca-Cola app data to inform multi-year business reviews and C-suite planning.</li>
+          <li>Embedded AI-assisted analytics using <strong>Power BI Copilot</strong> to automate insight generation — reducing manual reporting by <strong>45%</strong>, improving SLA performance by <strong>40%</strong>, and enabling non-technical stakeholders to self-serve independently.</li>
+          <li>Leveraged Salesforce CRM data to drive an <strong>18% uplift</strong> in Share A Coke campaign engagement, embedding customer insight directly into campaign strategy across markets.</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="chip">Power BI Copilot</span>
+          <span class="chip">Salesforce CRM</span>
+          <span class="chip">VoC Analytics</span>
+          <span class="chip">30+ Markets</span>
+          <span class="chip">AI Automation</span>
+          <span class="chip">C-Suite Reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HelloFresh -->
+    <div class="exp-block">
+      <div class="exp-left">
+        <div class="exp-period">Sept 2023 – May 2025</div>
+        <div class="exp-company">HelloFresh UK</div>
+      </div>
+      <div class="exp-right">
+        <h3 class="exp-role">Lead Analyst,<br>Customer Strategy & Experience</h3>
+        <ul class="exp-bullets">
+          <li>Led analytics team to build comprehensive BI infrastructure in <strong>Tableau & SQL</strong>, analysing cost drivers and delivering insights reducing operational costs by <strong>£40K+ annually</strong>.</li>
+          <li>Built executive-level Tableau dashboards monitoring agent policy adherence, driving a <strong>15% improvement</strong> and reducing compensation costs by ~£30K.</li>
+          <li>Designed and ran <strong>A/B testing</strong> on a loyalty compensation policy — presenting findings to cross-functional leadership resulting in ~5% uplift in retention and 15% reduction in churn.</li>
+          <li>Proactively identified data quality issues in logistics reporting; conducted root cause analysis and implemented fixes reducing monthly costs by ~<strong>£10K</strong>.</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="chip">Tableau</span>
+          <span class="chip">SQL</span>
+          <span class="chip">A/B Testing</span>
+          <span class="chip">Churn Modelling</span>
+          <span class="chip">Data Governance</span>
+          <span class="chip">Executive Dashboards</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- United Airlines -->
+    <div class="exp-block">
+      <div class="exp-left">
+        <div class="exp-period">Oct 2019 – Sept 2022</div>
+        <div class="exp-company">United Airlines</div>
+      </div>
+      <div class="exp-right">
+        <h3 class="exp-role">Commercial Analyst,<br>Sales Strategy & Operations</h3>
+        <ul class="exp-bullets">
+          <li>Designed Salesforce sales performance dashboards that drove a <strong>30% increase</strong> in B2B customer retention and improved forecasting accuracy by 15%.</li>
+          <li>Uncovered <strong>~$22M in revenue opportunities</strong> at Newark & Chicago hubs via competitive benchmarking and non-UA client gap analysis.</li>
+          <li>Managed centralised view of pipeline performance and account health across key B2B segments, giving sales leadership real-time visibility into deal stages, conversion rates and client risk.</li>
+          <li>Automated Salesforce sales workflows, reducing manual intervention and improving operational efficiency by <strong>40%</strong>.</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="chip">Salesforce</span>
+          <span class="chip">B2B Analytics</span>
+          <span class="chip">Revenue Ops</span>
+          <span class="chip">Forecasting</span>
+          <span class="chip">Competitive Benchmarking</span>
+          <span class="chip">Automation</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="sec-header">
+    <div class="sec-num">02</div>
+    <h2 class="sec-title">Skills & Tools</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="skills-grid">
+
+    <div>
+      <div class="skill-group-label">Data & Visualisation</div>
+      <div class="skill-item">
+        <span class="skill-name">SQL</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Power BI</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Tableau</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Python (pandas)</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Advanced Excel</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Power Automate</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-label">Platforms & Infrastructure</div>
+      <div class="skill-item">
+        <span class="skill-name">Salesforce CRM</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Snowflake</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Databricks</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">JIRA / Confluence</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Google Workspace</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">GitHub</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-label">Analytics Methods</div>
+      <div class="skill-item">
+        <span class="skill-name">A/B Testing & Experimentation</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Cohort & Churn Analysis</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">CLV & Funnel Analysis</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Data Governance</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Self-Serve BI</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Stakeholder Management</span>
+        <div class="skill-dot"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="sec" id="education">
+  <div class="sec-header">
+    <div class="sec-num">03</div>
+    <h2 class="sec-title">Education</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="edu-row">
+    <div class="edu-card">
+      <div class="edu-type">Masters · 2022–2023</div>
+      <div class="edu-degree">Business Management</div>
+      <div class="edu-inst">University of London</div>
+      <div class="edu-grade">★ Distinction</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-type">Bachelors · 2015–2019</div>
+      <div class="edu-degree">Engineering (B.E.)</div>
+      <div class="edu-inst">NSIT, University of Delhi</div>
+      <div class="edu-grade">★ Merit</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-type">Certifications</div>
+      <div class="edu-degree">Professional Credentials</div>
+      <div class="edu-inst">
+        Salesforce Certified Administrator<br>
+        SQL & Power BI · DataCamp<br>
+        COPC Workforce Management<br>
+        Claude 101 · Anthropic
+      </div>
+      <div class="edu-grade">✓ Certified</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- WHY ME -->
+<section class="sec why-sec" id="why">
+  <div class="sec-header">
+    <div class="sec-num">04</div>
+    <h2 class="sec-title">Why Me</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p class="why-intro">
+    I'm not a report factory. I'm an <strong>analytics strategist</strong> who happens to be deeply technical. Here's what I actually bring to the table.
+  </p>
+
+  <div class="why-grid">
+
+    <div class="why-card">
+      <div class="why-card-num">01 · End-to-End Ownership</div>
+      <div class="why-card-title">From raw data to boardroom narrative</div>
+      <div class="why-card-body">At Coca-Cola I owned the full analytics cycle across 30+ markets — infrastructure, insight generation, WBRs, MBRs, QBRs — delivered to C-suite. I don't hand off; I <strong>see it through</strong>.</div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-card-num">02 · Root Cause Thinking</div>
+      <div class="why-card-title">The why, not just the what</div>
+      <div class="why-card-body">From logistics defect spikes at HelloFresh to revenue gaps at United Airlines hubs — I habitually go <strong>beyond the surface metric</strong> to find the lever that actually changes the outcome.</div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-card-num">03 · Rigorous Experimentation</div>
+      <div class="why-card-title">A/B testing done properly</div>
+      <div class="why-card-body">Designed and executed A/B tests on loyalty mechanics using <strong>SQL and Python</strong> — measuring true incrementality, not correlation. Results presented to cross-functional leadership and embedded into policy.</div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-card-num">04 · AI & Automation First</div>
+      <div class="why-card-title">I've already shipped AI analytics</div>
+      <div class="why-card-body">Not just talking about AI — I deployed <strong>Power BI Copilot</strong> to automate reporting pipelines, eliminating 45% of manual work and enabling non-technical stakeholders to self-serve data without analyst support.</div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-card-num">05 · Cross-Industry Range</div>
+      <div class="why-card-title">FMCG · D2C · Aviation · B2B SaaS</div>
+      <div class="why-card-body">Worked across <strong>four distinct industries</strong> — each with different data maturity, stakeholder expectations, and commercial models. That breadth means I adapt fast and bring external pattern recognition.</div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-card-num">06 · Commercial Mindset</div>
+      <div class="why-card-title">Analytics tied to £ and $</div>
+      <div class="why-card-body">Every project I've led has a <strong>quantified business outcome</strong> attached to it — cost savings, revenue uncovered, retention improved. I think in commercial impact, not just data outputs.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Mahima Verma</div>
+  <div class="footer-links">
+    <a href="mailto:mahima.verma1804@gmail.com">mahima.verma1804@gmail.com</a>
+    <a href="tel:+447502611542">+44 7502 611542</a>
+    <a href="https://www.linkedin.com/in/mahima-verma-073660125/" target="_blank">LinkedIn</a>
+  </div>
+  <div class="footer-tagline">Analytics Manager · London, UK</div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.exp-block, .edu-card, .why-card').forEach(el => {
+  observer.observe(el);
+});
+
+// Skills dot animation on scroll
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const dots = entry.target.querySelectorAll('.dot.on');
+      dots.forEach((dot, i) => {
+        dot.style.opacity = '0';
+        setTimeout(() => {
+          dot.style.transition = 'opacity .3s ease';
+          dot.style.opacity = '1';
+        }, i * 80);
+      });
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.skills-grid').forEach(el => skillObserver.observe(el));
+</script>
+</body>
+</html>
